@@ -1,5 +1,4 @@
 const chai = require('chai');
-const should = chai.should();
 const expect = chai.expect;
 const moment = require('moment');
 const request = require('supertest'),
@@ -102,9 +101,9 @@ describe('No Key found in the DB', function() {
 describe('Find value with timestamp', function() {
   let objTimestamp;
   before(function(done) {
-    const store1 = {testGKeyxx: 'testGValxx'};
+    const store1 = {testKey100: 'testVal100'};
     agent.post('/object').send(store1).expect(200).end(function(err, result) {
-      result.body.value.should.equal('testGValxx');
+      result.body.value.should.equal('testVal100');
       objTimestamp = moment().valueOf();
       done();
     });
@@ -112,10 +111,10 @@ describe('Find value with timestamp', function() {
 
   it('Should return last updated value for given timestamp', function(done) {
     agent
-      .get('/object/' + 'testGKeyxx' + '?timestamp=' + objTimestamp)
+      .get('/object/' + 'testKey100' + '?timestamp=' + objTimestamp)
       .expect(200)
       .end(function(err, result) {
-        result.body.value.should.equal('testGValxx');
+        result.body.value.should.equal('testVal100');
         done();
       });
   });

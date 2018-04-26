@@ -69,7 +69,7 @@ exports.saveStrore = (req, res, next) => {
   //Create new Store object
   store.save(store, (err, result) => {
     if (err) {
-      logger.error('Error occured while saving : ' + err);
+      logger.debug('Error occured while saving : ' + err);
       const e = new Error('Invalid Data!');
       res.status(400);
       return next(e);

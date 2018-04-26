@@ -23,6 +23,6 @@ Run Test
 > "npm test"
 
 # Run with different environment config files
-> Production : NODE_ENV=prod node server.js
-> Development : nodemon server.js
-> QA : NODE_ENV=qa node server.js
+* Production : NODE_ENV=prod node server.js
+* Development : nodemon server.js
+* QA : NODE_ENV=qa node server.js

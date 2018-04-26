@@ -2,13 +2,19 @@
 Node Coding test project for VaultDragon
 
 # Prerequisites
-NodeJs,
+ NodeJs(v10.0.0), NPM(v5.6.0), MongoDB(db version v3.4.2)
+
+# Setup
+Go to the VaultDragonTest directory
+> run "npm install"
+
 # Development
 This project uses the EditorConfig
 http://editorconfig.org/
 
 This project uses ESLint for source code standards
 https://eslint.org/
-To run eslint : npm run eslint -s  
+>  run eslint : "npm run eslint -s"  
 
-# Setup environment
+Code Coverage
+> run "npm run coverage"

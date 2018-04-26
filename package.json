@@ -4,7 +4,7 @@
   "description": "This is a NodeJs test project for Vault Dragon",
   "main": "index.js",
   "scripts": {
-    "coverage":"nyc --reporter=text --reporter=html mocha",
+    "coverage": "nyc --all --reporter=text --reporter=html mocha",
     "start": "node ./server.js",
     "test": "mocha",
     "eslint": "./node_modules/.bin/eslint eslint ."

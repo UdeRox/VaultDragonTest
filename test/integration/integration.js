@@ -1,5 +1,6 @@
 const chai = require("chai");
 const should = chai.should();
+const moment = require("moment");
 const	request = require('supertest'),
 	app = require('../../server.js'),
 	mongoose = require('mongoose'),
@@ -61,19 +62,20 @@ const	request = require('supertest'),
           done();
         })
     })
-
-		it("Should return last updated value for given timestamp",function(done){
-			agent.get('/object/'+testGKey+'?timestamp=1524762175164')
-        .expect(200)
-        .end(function(err, result){
-          // result.body.should.have.property('_id');
-          result.body.value.should.equal('value2');
-          done();
-        })
-		})
  })
 
  describe("No Key found in the DB", function(){
+    before(function(done){
+      const store1 = {'testGKey':'testGVal'};
+      agent.post('/object')
+        .send(store1)
+				.expect(200)
+				.end(function(err, result){
+					result.body.value.should.equal('testGVal');
+					done();
+			})
+	})
+
 	it("No Key found in the DB", function(done){
     const noIdKey = "noIdKey";
 		agent.get('/object/'+noIdKey)
@@ -83,4 +85,27 @@ const	request = require('supertest'),
 			done();
 		})
 	})
+ })
+
+ describe("Find value with timestamp", function(){
+    let objTimestamp;
+    before(function(done){
+      const store1 = {'testGKeyxx':'testGValxx'};
+			agent.post('/object')
+			.send(store1)
+			.expect(200)
+			.end(function(err, result){
+				result.body.value.should.equal('testGValxx');
+				objTimestamp = moment().valueOf();
+				done();
+			})
+ })
+   it("Should return last updated value for given timestamp",function(done){
+     agent.get('/object/'+'testGKeyxx'+'?timestamp='+objTimestamp)
+      .expect(200)
+			.end(function(err, result){
+				result.body.value.should.equal('testGValxx');
+				done();
+			})
+		})
  })

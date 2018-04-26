@@ -3,21 +3,23 @@
 **/
 const express = require("express");
 const app = express();
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
 const routes = require("./routes/storeRoutes");
-// const db = require("./models/db");
 const logger = require('node-simple-logger-es6');
 const mongoose = require("mongoose");
-const dbURI = 'mongodb://localhost/cal';
+const config = require('config');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use('/object', routes);
 
+mongoose.connect(config.get('vaultDragon.dbConfig.host'));
+
 // Port allocation
-const PORT = process.env.PORT || 3000;
-mongoose.connect(dbURI);
+const PORT = config.get('vaultDragon.port') || 3000;
+mongoose.connect(PORT);
+
 app.listen(PORT, () => {
   logger.debug(`Server is listening on port ${PORT}` );
 });

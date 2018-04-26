@@ -6,7 +6,6 @@ const	request = require('supertest'),
   Store = mongoose.model('Store'),
 	agent = request.agent(app);
 
-
  before(function(done) { //Before each test we empty the database
     Store.remove({}, function(){
       done();
@@ -58,10 +57,20 @@ const	request = require('supertest'),
         .expect(200)
         .end(function(err, result){
           // result.body.should.have.property('_id');
-          result.body.value.should.equal(testGVal);
+          result.body.value.should.equal('testGVal');
           done();
         })
     })
+
+		it("Should return last updated value for given timestamp",function(done){
+			agent.get('/object/'+testGKey+'?timestamp=1524762175164')
+        .expect(200)
+        .end(function(err, result){
+          // result.body.should.have.property('_id');
+          result.body.value.should.equal('value2');
+          done();
+        })
+		})
  })
 
  describe("No Key found in the DB", function(){

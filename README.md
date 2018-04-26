@@ -14,7 +14,10 @@ http://editorconfig.org/
 
 This project uses ESLint for source code standards
 https://eslint.org/
->  run eslint : "npm run eslint -s"  
+> "npm run eslint -s"  
 
 Code Coverage
-> run "npm run coverage"
+> "npm run coverage" (Coverage report: coverage/index.html)
+
+Run Test
+> "npm test"

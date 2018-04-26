@@ -20,7 +20,9 @@ app.use((err, req, res, next) => {
 mongoose.connect(config.get('vaultDragon.dbConfig.host'));
 
 // Port allocation
-const PORT = config.get('vaultDragon.port') || 3000;
+// const PORT = config.get('vaultDragon.port') || 3000;
+const PORT = process.env.PORT || 5000;
+
 
 app.listen(PORT, () => {
   logger.debug(`Server is listening on port ${PORT}`);

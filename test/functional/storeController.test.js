@@ -8,7 +8,7 @@ const request = require('supertest'),
   agent = request.agent(app);
 
 before(function(done) {
-  //Before each test we empty the database
+  //Before each test, empty the database
   Store.remove({}, function() {
     done();
   });
@@ -127,5 +127,12 @@ describe('Find value with timestamp', function() {
         result.body.should.have.property('message');
         done();
       });
+  });
+});
+
+after(function(done) {
+  //after each test run, empty the database
+  Store.remove({}, function() {
+    done();
   });
 });

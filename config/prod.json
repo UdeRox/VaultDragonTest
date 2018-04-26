@@ -2,7 +2,7 @@
   "vaultDragon":{
     "env":"prod",
     "dbConfig":{
-      "host":"mongodb://localhost/cal"
+      "host":"mongodb://heroku_grgds607:6r4be6mqvg6ol07svvm66vp51a@ds259089.mlab.com:59089/heroku_grgds607"
     },
     "port":3001
   }

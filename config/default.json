@@ -1,9 +1,9 @@
 {
   "vaultDragon":{
-    "env":"prod",
+    "env":"dev",
     "dbConfig":{
       "host":"mongodb://localhost/cal"
     },
-    "port":3000
+    "port":2000
   }
 }

@@ -42,6 +42,11 @@ exports.getStore = (req, res, next) => {
         return res.status(400).json({message: 'There is no key for : ' + key});
       }
       res.status(200).json(createResponseObj1(result[0]));
+    }).catch(err =>{
+      logger.debug('Error occured retriveing data : ' + err);
+      const e = new Error('Invalid Data!');
+      res.status(400);
+      return next(e);
     });
   }
   // Filter attribute and convert timestamp to readble time.

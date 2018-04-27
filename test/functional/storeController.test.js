@@ -128,6 +128,16 @@ describe('Find value with timestamp', function() {
         done();
       });
   });
+
+  it('Invalid timestamp value', function(done) {
+    agent
+      .get('/object/' + 'testNoKey' + '?timestamp=objTimestamp')
+      .expect(400)
+      .end(function(err, result) {
+        expect(result.body.error).equal('Invalid Data!');
+        done();
+      });
+  });
 });
 
 after(function(done) {

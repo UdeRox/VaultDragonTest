@@ -6,8 +6,8 @@
   "scripts": {
     "coverage": "nyc --all --reporter=text --reporter=html mocha",
     "start": "NODE_ENV=prod node server.js",
-    "start-qa":"NODE_ENV=qa node server.js",
-    "start-dev":"nodemon server.js",
+    "start-qa": "NODE_ENV=qa node server.js",
+    "start-dev": "nodemon server.js",
     "test": "mocha",
     "eslint": "./node_modules/.bin/eslint eslint ."
   },
@@ -32,6 +32,7 @@
     "moment": "^2.22.1",
     "mongoose": "^5.0.16",
     "morgan": "^1.9.0",
+    "newrelic": "^4.1.0",
     "node-simple-logger-es6": "0.0.5"
   },
   "devDependencies": {
@@ -47,6 +48,6 @@
   },
   "engines": {
     "node": "10.0.0",
-    "npm":"5.6.0"
+    "npm": "5.6.0"
   }
 }

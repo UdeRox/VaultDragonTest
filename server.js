@@ -9,6 +9,7 @@ const logger = require('node-simple-logger-es6');
 const mongoose = require('mongoose');
 const config = require('config');
 const routes = require('./routes/storeRoutes');
+require('newrelic');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());

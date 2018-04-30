@@ -16,6 +16,8 @@ This project uses ESLint for source code standards
 https://eslint.org/
 > "npm run eslint -s"  
 
+Nuralic use as production monitoring tool
+
 Code Coverage
 > "npm run coverage" (Coverage report: coverage/index.html)
 
